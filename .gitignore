@@ -8,6 +8,10 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+<<<<<<< HEAD
+=======
+env/
+>>>>>>> create the hymn service setup
 build/
 develop-eggs/
 dist/
@@ -19,6 +23,7 @@ lib64/
 parts/
 sdist/
 var/
+<<<<<<< HEAD
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
@@ -26,6 +31,12 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+=======
+*.egg-info/
+.installed.cfg
+*.egg
+.idea/
+>>>>>>> create the hymn service setup
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -40,7 +51,6 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 htmlcov/
 .tox/
-.nox/
 .coverage
 .coverage.*
 .cache
@@ -50,6 +60,8 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+*,cover
+.hypothesis/
 
 # Translations
 *.mo
@@ -57,16 +69,6 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
 
 # Sphinx documentation
 docs/_build/
@@ -127,3 +129,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# vscode setting
+.vscode/
+
+hymn_venv
