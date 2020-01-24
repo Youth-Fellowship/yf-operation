@@ -1,12 +1,22 @@
 import os
 
-from flask import Flask
+from flask import Flask, g
+from flask_pymongo import PyMongo
+
+from services.hymns import bp
+from db import init_db
 
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/churchdb"
+
+    with app.app_context():
+        # make the db connection
+        init_db()
+
+    # register the blueprint
+    app.register_blueprint(bp)
 
     app.config.from_mapping(
         SECRET_KEY='dev',

@@ -8,10 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-<<<<<<< HEAD
-=======
 env/
->>>>>>> create the hymn service setup
 build/
 develop-eggs/
 dist/
@@ -23,7 +20,6 @@ lib64/
 parts/
 sdist/
 var/
-<<<<<<< HEAD
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
@@ -31,12 +27,10 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-=======
 *.egg-info/
 .installed.cfg
 *.egg
 .idea/
->>>>>>> create the hymn service setup
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

@@ -1,38 +1,10 @@
-# from services import root_dir, nice_json
-# from flask import Flask
-# import json
-# from werkzeug.exceptions import NotFound
+"""This module contains all the API for the hymnal service"""
+from flask import Blueprint, g
 
 
-# app = Flask(__name__)
-
-# with open("{}/database/bookings.json".format(root_dir()), "r") as f:
-#     bookings = json.load(f)
+bp = Blueprint("hymns", __name__, url_prefix="/hymns")
 
 
-# @app.route("/", methods=['GET'])
-# def hello():
-#     return nice_json({
-#         "uri": "/",
-#         "subresource_uris": {
-#             "bookings": "/bookings",
-#             "booking": "/bookings/<username>"
-#         }
-#     })
-
-
-# @app.route("/bookings", methods=['GET'])
-# def booking_list():
-#     return nice_json(bookings)
-
-
-# @app.route("/bookings/<username>", methods=['GET'])
-# def booking_record(username):
-#     if username not in bookings:
-#         raise NotFound
-
-#     return nice_json(bookings[username])
-
-# if __name__ == "__main__":
-#     app.run(port=5003, debug=True)
-
+@bp.route("/", methods=["GET"])
+def all_hymns():
+    return "I will get all the hymns"
