@@ -1,24 +1,20 @@
-from flask import Flask, g
-from flask_pymongo import PyMongo
+from flask import Flask
 
-from hymns import bp
-from db import init_db
+from .hymns import bp
+from .db import init_db
 
-
-def create_app(test_config=None):
+def create_app():
     # create and configure the app
-    app = Flask(__name__)
+    app: Flask = Flask(__name__)
 
+    # create database connection
     with app.app_context():
         # make the db connection
-        init_db()
+        # to have access to the db instance in the API blueprint
+        # haven't figured a better way yet
+        app.db = init_db(app)
 
     # register the blueprint
     app.register_blueprint(bp)
-
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
 
     return app
