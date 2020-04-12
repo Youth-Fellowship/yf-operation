@@ -1,3 +1,3 @@
-# yf-operation
+# hymnal-delivery
 
-To automate some of the processes in the church, this project will contain several services that helps to achieve that.
+This microservice is responsible for producing API for church hymns

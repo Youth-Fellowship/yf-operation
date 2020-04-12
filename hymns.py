@@ -1,8 +1,6 @@
 """This module contains all the API for the hymnal service"""
 import pymongo
-from bson import json_util
-from flask import Blueprint, g, current_app, jsonify
-import json
+from flask import Blueprint, current_app, jsonify
 
 bp = Blueprint("hymns", __name__, url_prefix="/hymns")
 
@@ -13,10 +11,11 @@ def hymns():
     # retrieve the database connection from the app instance
     db = current_app.db
 
-    # get all the hymns and arranged according to categories and no fields
+    # get all the hymns and arranged according to categories
     hymn_cursor = db.hymns.find({}, projection={'_id': False}).sort([
-        ('no', pymongo.ASCENDING),
-        ('category', pymongo.ASCENDING)])
+        ('category', pymongo.ASCENDING),
+        ('no', pymongo.ASCENDING)
+    ])
     all_hymns = list(hymn_cursor)
 
     return jsonify(data=all_hymns)
