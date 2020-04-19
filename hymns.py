@@ -18,4 +18,20 @@ def hymns():
     ])
     all_hymns = list(hymn_cursor)
 
+    return jsonify(hymns=all_hymns)
+
+
+@bp.route("/categories", methods=["GET"])
+def hymns_categories():
+    """get all the hymns in the data store"""
+    # retrieve the database connection from the app instance
+    db = current_app.db
+
+    # get all the ordered hymns categories
+    hymn_cursor = db.hymns.find({}, projection={'_id': False}).sort([
+        ('category', pymongo.ASCENDING),
+        ('no', pymongo.ASCENDING)
+    ])
+    all_hymns = list(hymn_cursor)
+
     return jsonify(data=all_hymns)

@@ -4,7 +4,6 @@ from hymns import bp
 from db import init_db
 
 
-
 def create_app():
     # create and configure the app
     app: Flask = Flask(__name__)
@@ -22,5 +21,5 @@ def create_app():
     return app
 
 
-# create the app
-app = create_app()
+if __name__ == "__main__":
+    create_app()
