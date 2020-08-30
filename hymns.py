@@ -5,7 +5,7 @@ from flask import Blueprint, current_app, jsonify, request
 bp = Blueprint("hymns", __name__, url_prefix="/hymns")
 
 
-@bp.route("/", methods=["GET"])
+@bp.route("", methods=["GET"])
 def hymns():
     """get all the hymns in the data store"""
     # retrieve the database connection from the app instance
@@ -17,9 +17,22 @@ def hymns():
     # probably a query was attached
     # the query can be extended to fields and values
     category = request.args.get('category')
-    if category is not None and category != "":
-        category = category.upper()
-        query = {"category": category}
+    hymn_no = request.args.get('hymn_no')
+
+    try:
+        hymn_no = int(hymn_no)
+    except:
+        hymn_no = None
+
+    #  if both category and hymn_no are present in the request query parameters.
+    if (category is not None and category != "") and hymn_no is not None:
+        query = {"category": category.upper(), "no": hymn_no}
+        hymn_cursor[0] = hymn_collection.find(query, projection={'_id': False})
+    elif category is not None and category != "":
+        query = {"category": category.upper()}
+        hymn_cursor[0] = hymn_collection.find(query, projection={'_id': False})
+    elif hymn_no is not None:
+        query = {"no": hymn_no}
         hymn_cursor[0] = hymn_collection.find(query, projection={'_id': False})
     else:
         hymn_cursor[0] = hymn_collection.find({}, projection={'_id': False}).sort([
