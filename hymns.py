@@ -5,7 +5,7 @@ from flask import Blueprint, current_app, jsonify, request
 bp = Blueprint("hymns", __name__, url_prefix="/hymns")
 
 
-@bp.route("", methods=["GET"])
+@bp.route("/", methods=["GET"])
 def hymns():
     """get all the hymns in the data store"""
     # retrieve the database connection from the app instance
